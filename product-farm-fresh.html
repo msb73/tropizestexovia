@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Fresh Produce - Tropizestexovia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-list-page {
+            padding: 80px 20px;
+        }
+        
+        .products-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .product-showcase-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .product-image-wrapper {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .product-variety {
+            color: var(--secondary-color);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .product-details {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .product-details p {
+            margin-bottom: 5px;
+        }
+        
+        .product-details strong {
+            color: var(--primary-color);
+        }
+        
+        .detail-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .spec {
+            font-size: 12px;
+        }
+        
+        .spec-label {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .spec-value {
+            color: var(--primary-color);
+        }
+        
+        .enquiry-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .enquiry-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Logo as link */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Tropizestexovia Logo" class="logo-img">
+                <span class="logo-text">Tropizestexovia</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="index.html#products" class="nav-link">Products</a></li>
+                <li><a href="index.html#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn-get-quote">Get Quote</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <h1 class="hero-title">Farm Fresh Produce</h1>
+            <p class="hero-subtitle">Directly from India's Certified Organic Farms</p>
+        </div>
+    </section>
+
+    <!-- Products List -->
+    <section class="product-list-page">
+        <div class="container">
+            <h2 class="section-title">Our Fresh Farm Produce</h2>
+            <p class="section-subtitle">Premium fresh vegetables sourced directly from certified organic farms with complete traceability</p>
+            
+            <div class="products-showcase">
+                <!-- Brinjal -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/bringal.png" alt="Brinjal" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Brinjal (Eggplant)</h3>
+                        <p class="product-variety">Indian Hybrid</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Size:</strong> Medium (8–12 cm)</p>
+                            <p><strong>Weight:</strong> 150–300g</p>
+                            <p><strong>Color:</strong> Deep Purple</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">7–10 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Origin</div>
+                                <div class="spec-value">India</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+
+                <!-- Chillies -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/chillies.png" alt="Chillies" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Chillies</h3>
+                        <p class="product-variety">Indian Variety</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Size:</strong> Medium</p>
+                            <p><strong>Color:</strong> Bright Green/Red</p>
+                            <p><strong>Maturity:</strong> Semi-mature</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">5–8 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Seasonal</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+
+                <!-- Drumsticks -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/drumstick.png" alt="Drumsticks" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Drumsticks</h3>
+                        <p class="product-variety">Indian Variety</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Length:</strong> 20–40 cm</p>
+                            <p><strong>Weight:</strong> 100–250g</p>
+                            <p><strong>Color:</strong> Green</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">5–7 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Year-round</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+
+                <!-- Gawar (Cluster Beans) -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/gawar.png" alt="Gawar (Cluster Beans)" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gawar (Cluster Beans)</h3>
+                        <p class="product-variety">Indian Variety</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Size:</strong> Small–Medium</p>
+                            <p><strong>Color:</strong> Green</p>
+                            <p><strong>Texture:</strong> Crisp</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">5–7 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Seasonal</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+
+                <!-- Okra -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/okra.png" alt="Okra" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Okra (Lady's Finger)</h3>
+                        <p class="product-variety">Indian Variety</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Size:</strong> 6–10 cm</p>
+                            <p><strong>Color:</strong> Green</p>
+                            <p><strong>Texture:</strong> Firm</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">5–7 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Year-round</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+
+                <!-- Raw Bananas -->
+                <div class="product-showcase-card">
+                    <div class="product-image-wrapper">
+                        <img src="images/raw banana.png" alt="Raw Bananas" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Raw Bananas</h3>
+                        <p class="product-variety">Indian Variety</p>
+                        <div class="product-details">
+                            <p><strong>Form:</strong> Fresh Whole</p>
+                            <p><strong>Size:</strong> Medium–Large</p>
+                            <p><strong>Color:</strong> Green</p>
+                            <p><strong>Maturity:</strong> Mature</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">10–14 days</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Year-round</div>
+                            </div>
+                        </div>
+                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px; text-align: center;">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px;">Need Fresh Produce in Bulk?</h3>
+                <p style="color: var(--text-light); margin-bottom: 30px;">Contact us for seasonal availability, bulk orders, and customized packaging solutions</p>
+                <a href="index.html#contact" class="btn btn-primary">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tropizestexovia</h4>
+                    <p>Certified manufacturer and exporter of premium organic health and food ingredients, bridging India's farms with global buyers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#certifications">Certifications</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tropizestexovia Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
