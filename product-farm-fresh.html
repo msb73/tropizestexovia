@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
-    <base href="/tropizestexovia/">
->>>>>>> 9444e30 (updated the main hyperlink)
+    <base href="">
     <title>Farm Fresh Produce - Tropizestexovia</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -139,6 +136,241 @@
         .logo:hover {
             opacity: 0.8;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .close-modal {
+            color: var(--text-light);
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-specs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .modal-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            padding: 10px;
+            background: var(--white);
+            border-radius: 5px;
+        }
+
+        .spec-item-label {
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .spec-item-value {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            border-top: 2px solid var(--secondary-color);
+            padding-top: 30px;
+        }
+
+        .modal-footer button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-contact {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-close {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .btn-close:hover {
+            background-color: var(--text-light);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px auto;
+            }
+
+            .modal-header h2 {
+                font-size: 20px;
+            }
+
+            .modal-specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -180,47 +412,47 @@
             <p class="section-subtitle">Premium fresh vegetables sourced directly from certified organic farms with complete traceability</p>
             
             <div class="products-showcase">
-                <!-- Brinjal -->
-                <div class="product-showcase-card">
+                <!-- Raw Bananas -->
+                <div class="product-showcase-card" onclick="openProductModal('raw-banana')">
                     <div class="product-image-wrapper">
-                        <img src="images/bringal.png" alt="Brinjal" onerror="this.style.display='none'">
+                        <img src="images/raw banana.png" alt="Raw Bananas" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        <h3>Brinjal (Eggplant)</h3>
-                        <p class="product-variety">Indian Hybrid</p>
+                        <h3>Raw Bananas</h3>
+                        <p class="product-variety">Cavendish G9</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Fresh Whole</p>
-                            <p><strong>Size:</strong> Medium (8–12 cm)</p>
-                            <p><strong>Weight:</strong> 150–300g</p>
-                            <p><strong>Color:</strong> Deep Purple</p>
+                            <p><strong>Size:</strong> 18-21 cm</p>
+                            <p><strong>Color:</strong> Green</p>
+                            <p><strong>Maturity:</strong> 70-80%</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
                                 <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">7–10 days</div>
+                                <div class="spec-value">10–14 days</div>
                             </div>
                             <div class="spec">
-                                <div class="spec-label">Origin</div>
-                                <div class="spec-value">India</div>
+                                <div class="spec-label">Seasonality</div>
+                                <div class="spec-value">Year-round</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Chillies -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('chilli')">
                     <div class="product-image-wrapper">
                         <img src="images/chillies.png" alt="Chillies" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Chillies</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">S 17 (TEJA)</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Fresh Whole</p>
                             <p><strong>Size:</strong> Medium</p>
-                            <p><strong>Color:</strong> Bright Green/Red</p>
-                            <p><strong>Maturity:</strong> Semi-mature</p>
+                            <p><strong>Color:</strong> Bright Red</p>
+                            <p><strong>Length:</strong> 5-9 cm</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
@@ -232,40 +464,40 @@
                                 <div class="spec-value">Seasonal</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Drumsticks -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('drumsticks')">
                     <div class="product-image-wrapper">
                         <img src="images/drumstick.png" alt="Drumsticks" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        <h3>Drumsticks</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <h3>Drumsticks (Moringa)</h3>
+                        <p class="product-variety">Premium Grade</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Fresh Whole</p>
-                            <p><strong>Length:</strong> 20–40 cm</p>
-                            <p><strong>Weight:</strong> 100–250g</p>
-                            <p><strong>Color:</strong> Green</p>
+                            <p><strong>Length:</strong> 45+ cm</p>
+                            <p><strong>Color:</strong> Bright Green</p>
+                            <p><strong>Grade:</strong> Premium</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
                                 <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">5–7 days</div>
+                                <div class="spec-value">10–15 days</div>
                             </div>
                             <div class="spec">
                                 <div class="spec-label">Seasonality</div>
                                 <div class="spec-value">Year-round</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Gawar (Cluster Beans) -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('gawar')">
                     <div class="product-image-wrapper">
                         <img src="images/gawar.png" alt="Gawar (Cluster Beans)" onerror="this.style.display='none'">
                     </div>
@@ -288,63 +520,63 @@
                                 <div class="spec-value">Seasonal</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
-                <!-- Okra -->
-                <div class="product-showcase-card">
+                <!-- Okra (Lady's Finger) -->
+                <div class="product-showcase-card" onclick="openProductModal('okra')">
                     <div class="product-image-wrapper">
                         <img src="images/okra.png" alt="Okra" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Okra (Lady's Finger)</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Organic & Conventional</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Fresh Whole</p>
-                            <p><strong>Size:</strong> 6–10 cm</p>
+                            <p><strong>Size:</strong> Medium–Large</p>
                             <p><strong>Color:</strong> Green</p>
                             <p><strong>Texture:</strong> Firm</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
                                 <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">5–7 days</div>
+                                <div class="spec-value">7–10 days</div>
                             </div>
                             <div class="spec">
                                 <div class="spec-label">Seasonality</div>
                                 <div class="spec-value">Year-round</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
-                <!-- Raw Bananas -->
-                <div class="product-showcase-card">
+                <!-- Brinjal -->
+                <div class="product-showcase-card" onclick="openProductModal('brinjal')">
                     <div class="product-image-wrapper">
-                        <img src="images/raw banana.png" alt="Raw Bananas" onerror="this.style.display='none'">
+                        <img src="images/bringal.png" alt="Brinjal" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        <h3>Raw Bananas</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <h3>Brinjal (Eggplant)</h3>
+                        <p class="product-variety">Indian Hybrid</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Fresh Whole</p>
-                            <p><strong>Size:</strong> Medium–Large</p>
-                            <p><strong>Color:</strong> Green</p>
-                            <p><strong>Maturity:</strong> Mature</p>
+                            <p><strong>Size:</strong> Medium (8–12 cm)</p>
+                            <p><strong>Weight:</strong> 150–300g</p>
+                            <p><strong>Color:</strong> Deep Purple</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
                                 <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">10–14 days</div>
+                                <div class="spec-value">7–10 days</div>
                             </div>
                             <div class="spec">
-                                <div class="spec-label">Seasonality</div>
-                                <div class="spec-value">Year-round</div>
+                                <div class="spec-label">Origin</div>
+                                <div class="spec-value">India</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
             </div>
@@ -356,6 +588,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Details</h2>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product">
+                </div>
+                <div class="modal-specs">
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-contact" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                <button class="btn-close" onclick="closeProductModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -382,5 +636,203 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <script>
+        // Product data for farm fresh products
+        const farmFreshProducts = {
+            'raw-banana': {
+                name: 'Raw Bananas',
+                image: 'images/raw banana.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Variety: Cavendish G9',
+                            'Color: Green',
+                            'Length: 18 cm to 21 cm length from Pulp to Tip',
+                            'Calibre: Min. 39 mm to Max 47 mm',
+                            'Maturity: 70 - 80%',
+                            'Hands: 4,5,6 hands 85% & 7 hands 15%'
+                        ]
+                    },
+                    {
+                        title: 'Packaging & Container Loading',
+                        items: [
+                            'Box Type: Bottom 5 Ply & Top 3 Ply Carton Box',
+                            'Net Weight: 7 Kg / 13 Kg',
+                            'Gross Weight: 7.8 kg / 14 Kg',
+                            'Temperature: 13 Degree',
+                            '40ft RF HC: 7 Kg NWB X 2650 Boxes',
+                            '40ft RF HC: 13 Kg NWB X 1540 Boxes'
+                        ]
+                    },
+                    {
+                        title: 'Additional Details',
+                        items: [
+                            'Supply Ability: 10 FCL / Week',
+                            'Origin: Solapur, Jalgaon, Nanded (India)',
+                            'IncoTerms: FOB or CIF',
+                            'Payment Terms: 50% Advance & 50% DP',
+                            'Delivery Time: 7 Days From Date Of Advance',
+                            'Port of Loading: JNPT Port Mumbai'
+                        ]
+                    }
+                ]
+            },
+            'drumsticks': {
+                name: 'Drumsticks (Moringa)',
+                image: 'images/drumstick.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Color: Bright Green',
+                            'Grade: Premium',
+                            'Maturity: 45+ cm in Length',
+                            'Shelf Life: 10 - 15 Days'
+                        ]
+                    },
+                    {
+                        title: 'Packaging & Container Loading',
+                        items: [
+                            'Weight: 4 Kg bag',
+                            'Gross Weight: 4.1 Kg bag',
+                            'Temperature: 6°C'
+                        ]
+                    },
+                    {
+                        title: 'Additional Details',
+                        items: [
+                            'Origin: Tamilnadu, Andhra, Karnataka, Maharashtra',
+                            'IncoTerms: FOB or CIF',
+                            'Payment Terms: 50% Advance & 50% DP',
+                            'Delivery Time: 7 Days From Date Of Advance',
+                            'Port of Loading: JNPT Port Mumbai'
+                        ]
+                    }
+                ]
+            },
+            'chilli': {
+                name: 'Chillies (S 17 TEJA)',
+                image: 'images/chillies.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Color: Bright Red',
+                            'Variety: S 17 (TEJA)',
+                            'Moisture: Below 12%',
+                            'ASTA color: 50 - 70',
+                            'Form: Whole Fresh',
+                            'Length: 5 - 9 cm'
+                        ]
+                    },
+                    {
+                        title: 'Additional Details',
+                        items: [
+                            'Skin: Thick',
+                            'Shelf Life: 5-8 days in Cool place at 8-12°C',
+                            'IncoTerms: FOB or CIF',
+                            'Payment Terms: 50% Advance & 50% DP',
+                            'Delivery Time: 7 Days From Date Of Advance',
+                            'Port of Loading: JNPT Port Mumbai'
+                        ]
+                    }
+                ]
+            },
+            'okra': {
+                name: "Okra (Lady's Finger)",
+                image: 'images/okra.png',
+                sections: [
+                    {
+                        title: 'Product Specifications',
+                        items: [
+                            'Cultivation Type: Organic & Conventional',
+                            'Moisture (%): 85%-90%',
+                            'Shelf Life: 7-10 Days',
+                            'Size: Medium to Large',
+                            'Storage Temperature: 8°C - 12°C',
+                            'Style: Instant',
+                            'Variety: Hybrid/Natural',
+                            'Supply Ability: 10000 Per Week'
+                        ]
+                    }
+                ]
+            },
+            'gawar': {
+                name: 'Gawar (Cluster Beans)',
+                image: 'images/gawar.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Fresh Whole',
+                            'Size: Small–Medium',
+                            'Color: Green',
+                            'Texture: Crisp',
+                            'Shelf Life: 5–7 days',
+                            'Seasonality: Seasonal',
+                            'Cultivation Type: Organic & Conventional'
+                        ]
+                    }
+                ]
+            },
+            'brinjal': {
+                name: 'Brinjal (Eggplant)',
+                image: 'images/bringal.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Variety: Indian Hybrid',
+                            'Form: Fresh Whole',
+                            'Size: Medium (8–12 cm)',
+                            'Weight: 150–300g',
+                            'Color: Deep Purple',
+                            'Shelf Life: 7–10 days',
+                            'Origin: India'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function openProductModal(productId) {
+            const product = farmFreshProducts[productId];
+            if (!product) return;
+
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalImage').src = product.image;
+
+            let contentHTML = '';
+            product.sections.forEach(section => {
+                contentHTML += `
+                    <div class="modal-section">
+                        <h3>${section.title}</h3>
+                        <ul>
+                            ${section.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalContent').innerHTML = contentHTML;
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeProductModal();
+            }
+        }
+    </script>
 </body>
 </html>

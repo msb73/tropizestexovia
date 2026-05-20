@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
-    <base href="/tropizestexovia/">
->>>>>>> 9444e30 (updated the main hyperlink)
+    <base href="">
+    <!-- <base href="/tropizestexovia/"> -->
     <title>Dehydrated & Powdered Products - Tropizestexovia</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -139,6 +137,241 @@
         .logo:hover {
             opacity: 0.8;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .close-modal {
+            color: var(--text-light);
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-specs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .modal-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            padding: 10px;
+            background: var(--white);
+            border-radius: 5px;
+        }
+
+        .spec-item-label {
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .spec-item-value {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            border-top: 2px solid var(--secondary-color);
+            padding-top: 30px;
+        }
+
+        .modal-footer button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-contact {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-close {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .btn-close:hover {
+            background-color: var(--text-light);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px auto;
+            }
+
+            .modal-header h2 {
+                font-size: 20px;
+            }
+
+            .modal-specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,46 +424,46 @@
             
             <div class="products-showcase">
                 <!-- Banana Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('banana-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/Banana powder.jpg" alt="Banana Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Banana Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Fruit Powder</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
-                            <p><strong>Size:</strong> 80–100 Mesh</p>
-                            <p><strong>Moisture:</strong> ≤5%</p>
-                            <p><strong>Color:</strong> Creamy White</p>
+                            <p><strong>Shelf Life:</strong> 1 year</p>
+                            <p><strong>Price:</strong> ₹485 / Kg</p>
+                            <p><strong>MOQ:</strong> Contact us</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
                                 <div class="spec-label">Quality</div>
-                                <div class="spec-value">Export/Premium</div>
+                                <div class="spec-value">Export Grade</div>
                             </div>
                             <div class="spec">
-                                <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">12–24 months</div>
+                                <div class="spec-label">Supply</div>
+                                <div class="spec-value">Worldwide</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="document.getElementById('contact') ? document.getElementById('contact').scrollIntoView({behavior:'smooth'}) : window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Capsicum Flakes -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('capsicum-flakes')">
                     <div class="product-image-wrapper">
                         <img src="images/capsicum flakes.png" alt="Capsicum Flakes" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Capsicum Flakes</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Flakes</p>
-                            <p><strong>Size:</strong> 2–5 mm</p>
-                            <p><strong>Moisture:</strong> ≤6%</p>
-                            <p><strong>Color:</strong> Red/Green</p>
+                            <p><strong>Size:</strong> 3-5 mm</p>
+                            <p><strong>Price:</strong> ₹200 / Kg</p>
+                            <p><strong>MOQ:</strong> 5 Kg</p>
                         </div>
                         <div class="detail-specs">
                             <div class="spec">
@@ -239,21 +472,21 @@
                             </div>
                             <div class="spec">
                                 <div class="spec-label">Shelf Life</div>
-                                <div class="spec-value">12–24 months</div>
+                                <div class="spec-value">2-3 Years</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Chilli Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('chilli-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/chilli powder.png" alt="Chilli Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Chilli Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dried & Ground</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
                             <p><strong>Size:</strong> 80–120 Mesh</p>
@@ -270,18 +503,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Garlic Flakes -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('garlic-flakes')">
                     <div class="product-image-wrapper">
                         <img src="images/Garlic Flakes.png" alt="Garlic Flakes" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Garlic Flakes</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Flakes</p>
                             <p><strong>Size:</strong> 2–4 mm</p>
@@ -298,18 +531,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Garlic Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('garlic-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/garlic powder.png" alt="Garlic Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Garlic Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
                             <p><strong>Size:</strong> 80–120 Mesh</p>
@@ -326,18 +559,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Ginger Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('ginger-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/Ginger Powder.png" alt="Ginger Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Ginger Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
                             <p><strong>Size:</strong> 80–100 Mesh</p>
@@ -354,18 +587,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Moringa Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('moringa-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/Moringa Powder.png" alt="Moringa Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Moringa Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Premium</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
                             <p><strong>Size:</strong> 80–100 Mesh</p>
@@ -382,18 +615,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Onion Flakes -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('onion-flakes')">
                     <div class="product-image-wrapper">
                         <img src="images/onion flakes.png" alt="Onion Flakes" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Onion Flakes</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Flakes</p>
                             <p><strong>Size:</strong> 8–10 mm</p>
@@ -410,18 +643,18 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
 
                 <!-- Tomato Powder -->
-                <div class="product-showcase-card">
+                <div class="product-showcase-card" onclick="openProductModal('tomato-powder')">
                     <div class="product-image-wrapper">
                         <img src="images/tomato powder.png" alt="Tomato Powder" onerror="this.style.display='none'">
                     </div>
                     <div class="product-info">
                         <h3>Tomato Powder</h3>
-                        <p class="product-variety">Indian Variety</p>
+                        <p class="product-variety">Dehydrated</p>
                         <div class="product-details">
                             <p><strong>Form:</strong> Powder</p>
                             <p><strong>Size:</strong> 80–100 Mesh</p>
@@ -438,7 +671,7 @@
                                 <div class="spec-value">12–24 months</div>
                             </div>
                         </div>
-                        <button class="enquiry-btn" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                        <button class="enquiry-btn">View Details</button>
                     </div>
                 </div>
             </div>
@@ -450,6 +683,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Details</h2>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product">
+                </div>
+                <div class="modal-specs">
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-contact" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                <button class="btn-close" onclick="closeProductModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -476,5 +731,308 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <script>
+        // Product data for dehydrated products
+        const dehydratedProducts = {
+            'banana-powder': {
+                name: 'Banana Powder',
+                image: 'images/Banana powder.jpg',
+                sections: [
+                    {
+                        title: 'Product Specifications',
+                        items: [
+                            'Price: ₹485 / Kg',
+                            'Shelf Life: 1 year',
+                            'Form: Powder',
+                            'Type: Fruit Powder',
+                            'Packaging Type: Plastic container food edible',
+                            'Supply Type: Manufacturer, Exporter, Supplier'
+                        ]
+                    },
+                    {
+                        title: 'Packaging Options',
+                        items: [
+                            '100gm',
+                            '200gm',
+                            '250gm',
+                            '500gm',
+                            '1kg',
+                            'Bulk quantities available'
+                        ]
+                    },
+                    {
+                        title: 'Availability',
+                        items: [
+                            'Preferred Buyer Location: All over the world',
+                            'Supply: Consistent throughout the year',
+                            'Quality: Premium Grade'
+                        ]
+                    }
+                ]
+            },
+            'capsicum-flakes': {
+                name: 'Dehydrated Color Capsicum Flakes',
+                image: 'images/capsicum flakes.png',
+                sections: [
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Price: ₹200 INR / Kilograms',
+                            'MOQ: 5 Kilograms',
+                            'Size: 3-5 mm, Custom Sizes Available',
+                            'Variety: Red, Yellow, Green Capsicum',
+                            'Moisture (%): 10%',
+                            'Processing Form: Dried',
+                            'Style / Shape: Flakes'
+                        ]
+                    },
+                    {
+                        title: 'Quality Parameters',
+                        items: [
+                            'Cultivation Type: Common, Organic on Request',
+                            'Preserving Compound: No Artificial Preservatives',
+                            'Shelf Life: 2-3 Years',
+                            'Foreign Matter: Not more than 0.5%',
+                            'Color: Natural Red, Yellow, Green',
+                            'Purity: 99% Min.'
+                        ]
+                    },
+                    {
+                        title: 'Packaging & Usage',
+                        items: [
+                            'Packaging Size: 100g, 250g, 1kg, Bulk',
+                            'Packaging Type: Poly Bags, Carton Box',
+                            'Application: Snacks, Soups, Ready Meals, Seasonings',
+                            'Ingredient: 100% Natural Capsicum',
+                            'Use: For Culinary and Industrial Usage',
+                            'Rehydration Ratio: 1:6 Approx.',
+                            'Aroma: Characteristic Fresh Capsicum',
+                            'Free From: Additives, Preservatives, GMOs, Artificial Colors'
+                        ]
+                    },
+                    {
+                        title: 'Storage',
+                        items: [
+                            'Storage Temperature: Cool, Dry Place (Below 25°C)',
+                            'Ideal for long-term storage'
+                        ]
+                    }
+                ]
+            },
+            'chilli-powder': {
+                name: 'Chilli Powder',
+                image: 'images/chilli powder.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Powder',
+                            'Size: 80–120 Mesh',
+                            'Moisture: ≤8%',
+                            'Color: Deep Red',
+                            'Quality Grades: A/B/Commercial'
+                        ]
+                    },
+                    {
+                        title: 'Storage & Shelf Life',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Storage: Cool and Dry Place',
+                            'Temperature: 5-10°C recommended'
+                        ]
+                    }
+                ]
+            },
+            'garlic-flakes': {
+                name: 'Garlic Flakes',
+                image: 'images/Garlic Flakes.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Flakes',
+                            'Size: 2–4 mm',
+                            'Moisture: ≤6%',
+                            'Color: Light Cream',
+                            'Quality: Export Grade'
+                        ]
+                    },
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated',
+                            'Origin: India',
+                            'Purity: High Grade'
+                        ]
+                    }
+                ]
+            },
+            'garlic-powder': {
+                name: 'Garlic Powder',
+                image: 'images/garlic powder.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Powder',
+                            'Size: 80–120 Mesh',
+                            'Moisture: ≤6%',
+                            'Color: Off-white',
+                            'Quality Grades: A/B Grade'
+                        ]
+                    },
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated & Ground',
+                            'Origin: India',
+                            'Applications: Spice blends, Seasonings, Ready meals'
+                        ]
+                    }
+                ]
+            },
+            'ginger-powder': {
+                name: 'Ginger Powder',
+                image: 'images/Ginger Powder.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Powder',
+                            'Size: 80–100 Mesh',
+                            'Moisture: ≤6%',
+                            'Color: Light Yellow',
+                            'Quality: Export Grade'
+                        ]
+                    },
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated & Ground',
+                            'Origin: India',
+                            'Applications: Beverages, Spice mixes, Traditional medicine'
+                        ]
+                    }
+                ]
+            },
+            'moringa-powder': {
+                name: 'Moringa Powder',
+                image: 'images/Moringa Powder.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Powder',
+                            'Size: 80–100 Mesh',
+                            'Moisture: ≤5%',
+                            'Color: Green',
+                            'Quality: Premium'
+                        ]
+                    },
+                    {
+                        title: 'Nutritional Benefits',
+                        items: [
+                            'Rich in nutrients',
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated Drumstick Leaves',
+                            'Origin: India',
+                            'Applications: Health supplements, Nutraceuticals, Functional foods'
+                        ]
+                    }
+                ]
+            },
+            'onion-flakes': {
+                name: 'Onion Flakes',
+                image: 'images/onion flakes.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Flakes',
+                            'Size: 8–10 mm',
+                            'Moisture: ≤6%',
+                            'Color: White',
+                            'Quality: Export Grade'
+                        ]
+                    },
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated',
+                            'Origin: India',
+                            'Applications: Spice blends, Seasoning mixes, Food processing'
+                        ]
+                    }
+                ]
+            },
+            'tomato-powder': {
+                name: 'Tomato Powder',
+                image: 'images/tomato powder.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Form: Powder',
+                            'Size: 80–100 Mesh',
+                            'Moisture: ≤5%',
+                            'Color: Red',
+                            'Quality: Export Grade'
+                        ]
+                    },
+                    {
+                        title: 'Specifications',
+                        items: [
+                            'Shelf Life: 12–24 months',
+                            'Processing: Dehydrated & Ground',
+                            'Origin: India',
+                            'Applications: Soups, Sauces, Ready meals, Seasonings'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function openProductModal(productId) {
+            const product = dehydratedProducts[productId];
+            if (!product) return;
+
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalImage').src = product.image;
+
+            let contentHTML = '';
+            product.sections.forEach(section => {
+                contentHTML += `
+                    <div class="modal-section">
+                        <h3>${section.title}</h3>
+                        <ul>
+                            ${section.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalContent').innerHTML = contentHTML;
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeProductModal();
+            }
+        }
+    </script>
 </body>
 </html>
