@@ -605,9 +605,63 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-contact" onclick="window.location.href='index.html#contact'">Get Quote</button>
+                <button class="btn-contact" onclick="openQuoteModal(document.getElementById('modalTitle').textContent)">Get Quote</button>
                 <button class="btn-close" onclick="closeProductModal()">Close</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal-quote">
+        <div class="modal-content-quote">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 style="margin:0; color:var(--primary-color);">Get a Quote</h3>
+                <button onclick="closeQuoteModal()" style="background:none; border:none; font-size:28px; cursor:pointer; color:var(--text-light);">&times;</button>
+            </div>
+            <form id="quoteForm">
+                <div class="quote-grid">
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required>
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    <div>
+                        <label>Company Name</label>
+                        <input type="text" name="company">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div>
+                        <label>Phone</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div>
+                        <label>Product</label>
+                        <input type="text" id="quote_product" name="product" placeholder="Product name or leave blank">
+                    </div>
+                    <div class="full">
+                        <label>Requirement</label>
+                        <textarea name="requirement" rows="3"></textarea>
+                    </div>
+                    <div class="full">
+                        <label>Address</label>
+                        <textarea name="address" rows="2"></textarea>
+                    </div>
+                    <div>
+                        <label>Expected Date</label>
+                        <input type="date" name="expected_date">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-close" onclick="closeQuoteModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send via Email</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -630,7 +684,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Tropizestexovia Pvt Ltd. All rights reserved.</p>
+                <p>&copy; 2026 TROPIZESTEXOVIA PRIVATE LIMITED. All rights reserved.</p>
             </div>
         </div>
     </footer>

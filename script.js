@@ -167,3 +167,105 @@ document.querySelectorAll('.stat').forEach(stat => {
 });
 
 console.log('Website loaded successfully!');
+
+// ==================== Quote Modal & Submission ==================== //
+// Open quote modal (optionally with product name)
+function openQuoteModal(productName = '') {
+    const modal = document.getElementById('quoteModal');
+    if (!modal) return;
+    const productInput = document.getElementById('quote_product');
+    if (productInput) productInput.value = productName || '';
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeQuoteModal() {
+    const modal = document.getElementById('quoteModal');
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Attach click handlers for any element with .btn-get-quote
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('.btn-get-quote');
+    if (!target) return;
+    e.preventDefault();
+    // If button has data-product attribute, use it
+    const product = target.dataset && target.dataset.product ? target.dataset.product : '';
+    openQuoteModal(product);
+});
+
+// Handle form submit
+const quoteForm = document.getElementById('quoteForm');
+if (quoteForm) {
+    quoteForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = new FormData(form);
+        const first = (data.get('first_name') || '').toString().trim();
+        const last = (data.get('last_name') || '').toString().trim();
+        const company = (data.get('company') || '').toString().trim();
+        const email = (data.get('email') || '').toString().trim();
+        const phone = (data.get('phone') || '').toString().trim();
+        const product = (data.get('product') || '').toString().trim();
+        const requirement = (data.get('requirement') || '').toString().trim();
+        const address = (data.get('address') || '').toString().trim();
+        const expected = (data.get('expected_date') || '').toString().trim();
+
+        // Basic validation
+        if (!first || !email || !phone) {
+            alert('Please fill First name, Email and Phone.');
+            return;
+        }
+
+        // Build message
+        const lines = [];
+        lines.push('Quote Request');
+        lines.push('-------------------');
+        lines.push(`Name: ${first} ${last}`);
+        if (company) lines.push(`Company: ${company}`);
+        lines.push(`Email: ${email}`);
+        lines.push(`Phone: ${phone}`);
+        if (product) lines.push(`Product: ${product}`);
+        if (requirement) lines.push(`Requirement: ${requirement}`);
+        if (address) lines.push(`Address: ${address}`);
+        if (expected) lines.push(`Expected Date: ${expected}`);
+        lines.push('');
+        lines.push('Sent from website quote form');
+
+        const message = lines.join('\n');
+
+        // Open Gmail compose (web) and mailto as fallback
+        try {
+            const to = 'tropizestexovia@gmail.com';
+            const subject = `Quote Request${product ? ': ' + product : ''}`;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.open(gmailUrl, '_blank');
+        } catch (err) {
+            console.warn('Could not open Gmail compose', err);
+        }
+
+        // Also open mailto as a fallback
+        try {
+            const to = 'tropizestexovia@gmail.com';
+            const subject = `Quote Request${product ? ': ' + product : ''}`;
+            const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.open(mailto, '_blank');
+        } catch (err) {
+            console.warn('Could not open mailto', err);
+        }
+
+        alert('Your quote request is ready — an email compose window opened.');
+        form.reset();
+        closeQuoteModal();
+    });
+}
+
+// Close quote modal when clicking outside
+window.addEventListener('click', function(e) {
+    const modal = document.getElementById('quoteModal');
+    if (!modal) return;
+    if (e.target === modal) closeQuoteModal();
+});
