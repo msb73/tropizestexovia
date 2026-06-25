@@ -383,5 +383,15 @@
     </footer>
 
     <script src="script.js"></script>
+<div id="google_translate_element" style="position:fixed;top:60px;right:5px;z-index:9999;background-color: transparent;padding:6px;border-radius:2px;"></div>
+<script>
+function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+  pageLanguage:'en',
+  includedLanguages:'en,hi,de,fr,es,zh-CN,ar,ru,ja,it,pt',
+ }, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
