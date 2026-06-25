@@ -269,3 +269,23 @@ window.addEventListener('click', function(e) {
     if (!modal) return;
     if (e.target === modal) closeQuoteModal();
 });
+
+document.addEventListener('DOMContentLoaded',()=>{
+ const topBtn=document.getElementById('backToTop');
+ window.addEventListener('scroll',()=>{
+   if(window.scrollY>300) topBtn.style.display='block';
+   else topBtn.style.display='none';
+ });
+ if(topBtn) topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+ const search=document.getElementById('productSearch');
+ if(search){
+  search.addEventListener('input',e=>{
+   const q=e.target.value.toLowerCase();
+   document.querySelectorAll('img, .product-card, .product').forEach(el=>{
+      const txt=(el.innerText||el.alt||'').toLowerCase();
+      el.style.display = txt.includes(q) || q=='' ? '' : 'none';
+   });
+  });
+ }
+});
