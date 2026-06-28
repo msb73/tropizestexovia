@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="">
+    <title>Farm Fresh Produce - Tropizestexovia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-list-page {
+            padding: 80px 20px;
+        }
+        
+        .products-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .product-showcase-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .product-image-wrapper {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .product-variety {
+            color: var(--secondary-color);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .product-details {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .product-details p {
+            margin-bottom: 5px;
+        }
+        
+        .product-details strong {
+            color: var(--primary-color);
+        }
+        
+        .detail-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .spec {
+            font-size: 12px;
+        }
+        
+        .spec-label {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .spec-value {
+            color: var(--primary-color);
+        }
+        
+        .enquiry-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .enquiry-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Logo as link */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .close-modal {
+            color: var(--text-light);
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-specs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .modal-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            padding: 10px;
+            background: var(--white);
+            border-radius: 5px;
+        }
+
+        .spec-item-label {
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .spec-item-value {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            border-top: 2px solid var(--secondary-color);
+            padding-top: 30px;
+        }
+
+        .modal-footer button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-contact {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-close {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .btn-close:hover {
+            background-color: var(--text-light);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px auto;
+            }
+
+            .modal-header h2 {
+                font-size: 20px;
+            }
+
+            .modal-specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Tropizestexovia Logo" class="logo-img">
+                <span class="logo-text">Tropizestexovia</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="index.html#products" class="nav-link">Products</a></li>
+                <li><a href="index.html#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn-get-quote">Get Quote</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <h1 class="hero-title">Premix Food</h1>
+            <p class="hero-subtitle">Directly from India's Certified Organic Farms</p>
+        </div>
+    </section>
+
+    <!-- Products List -->
+    <section class="product-list-page">
+        <div class="container">
+            <h2 class="section-title">Our Premix Products</h2>
+            <p class="section-subtitle">Delicious and convenient premixes for quick and healthy meals</p>
+            
+            <div class="products-showcase">
+                <!-- Dosa -->
+                <div class="product-showcase-card" onclick="openProductModal('dosa-mix')">
+                    <div class="product-image-wrapper">
+                        <img src="images/banana dosa mix.png" alt="DOsa Mix" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Raw Banana Powder Dosa Mix</h3>
+                        <p class="product-variety">A delicious and nutritious mix for making authentic dosas.</p>
+                        <div class="product-details">
+                            <p>Gluten Free, 100% Natural</p>
+                            <p>Rich in Dietary Fiber for better digestion </p>
+                            <p>Source of Potassium, Magnesium, Iron and Vitamin B6.</p>
+                            <p>Ready in 3 Minutes</p>
+                            <p>Great for Breakfast and Snacking</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <!-- <div class="spec-label">Shelf Life</div> -->
+                                <!-- <div class="spec-value">10–14 days</div> -->
+                            </div>
+                            <div class="spec">
+                                <!-- <div class="spec-label">Seasonality</div> -->
+                                <!-- <div class="spec-value">Year-round</div> -->
+                            </div>
+                        </div>
+                        <button class="enquiry-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Pancake -->
+                <div class="product-showcase-card" onclick="openProductModal('pancake-mix')">
+                    <div class="product-image-wrapper">
+                        <img src="images/banana pancake mix.png" alt="Pancake" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Banana Powder Pancake Mix</h3>
+                        <p class="product-variety">A delicious and nutritious mix for making authentic pancakes.</p>
+                        <div class="product-details">
+                            <p>Gluten Free, 100% Natural</p>
+                            <p>Rich in Dietary Fiber for better digestion </p>
+                            <p>Source of Potassium, Magnesium, Iron and Vitamin B6.</p>
+                            <p>Ready in 3 Minutes</p>
+                            <p>Great for Breakfast and Snacking</p>
+                        </div>
+                        <div class="detail-specs">
+                            <div class="spec">
+                                <!-- <div class="spec-label">Shelf Life</div> -->
+                                <!-- <div class="spec-value">5–8 days</div> -->
+                            </div>
+                            <div class="spec">
+                                <!-- <div class="spec-label">Seasonality</div> -->
+                                <!-- <div class="spec-value">Seasonal</div> -->
+                            </div>
+                        </div>
+                        <button class="enquiry-btn">View Details</button>
+                    </div>
+                </div>
+
+                
+
+                
+
+
+
+            <div style="margin-top: 80px; text-align: center;">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px;">Need Fresh Produce in Bulk?</h3>
+                <p style="color: var(--text-light); margin-bottom: 30px;">Contact us for seasonal availability, bulk orders, and customized packaging solutions</p>
+                <a href="index.html#contact" class="btn btn-primary">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Details</h2>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product">
+                </div>
+                <div class="modal-specs">
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-contact" onclick="openQuoteModal(document.getElementById('modalTitle').textContent)">Get Quote</button>
+                <button class="btn-close" onclick="closeProductModal()">Close</button>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal-quote">
+        <div class="modal-content-quote">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 style="margin:0; color:var(--primary-color);">Get a Quote</h3>
+                <button onclick="closeQuoteModal()" style="background:none; border:none; font-size:28px; cursor:pointer; color:var(--text-light);">&times;</button>
+            </div>
+            <form id="quoteForm">
+                <div class="quote-grid">
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required>
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    <div>
+                        <label>Company Name</label>
+                        <input type="text" name="company">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div>
+                        <label>Phone</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div>
+                        <label>Product</label>
+                        <input type="text" id="quote_product" name="product" placeholder="Product name or leave blank">
+                    </div>
+                    <div class="full">
+                        <label>Requirement</label>
+                        <textarea name="requirement" rows="3"></textarea>
+                    </div>
+                    <div class="full">
+                        <label>Address</label>
+                        <textarea name="address" rows="2"></textarea>
+                    </div>
+                    <div>
+                        <label>Expected Date</label>
+                        <input type="date" name="expected_date">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-close" onclick="closeQuoteModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send via Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tropizestexovia</h4>
+                    <p>Certified manufacturer and exporter of premium organic health and food ingredients, bridging India's farms with global buyers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#certifications">Certifications</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TROPIZESTEXOVIA PRIVATE LIMITED. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Product data for farm fresh products
+        const farmFreshProducts = {
+            'dosa-mix': {
+                name: 'Dosa Mix',
+                image: 'images/banana dosa mix.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Variety: Cavendish G9',
+                            'Color: Green',
+                            'Length: 18 cm to 21 cm length from Pulp to Tip',
+                            'Calibre: Min. 39 mm to Max 47 mm',
+                            'Maturity: 70 - 80%',
+                            'Hands: 4,5,6 hands 85% & 7 hands 15%'
+                        ]
+                    },
+                    {
+                        title: 'Packaging & Container Loading',
+                        items: [
+                            'Box Type: Bottom 5 Ply & Top 3 Ply Carton Box',
+                            'Net Weight: 7 Kg / 13 Kg',
+                            'Gross Weight: 7.8 kg / 14 Kg',
+                            'Temperature: 13 Degree',
+                            '40ft RF HC: 7 Kg NWB X 2650 Boxes',
+                            '40ft RF HC: 13 Kg NWB X 1540 Boxes'
+                        ]
+                    },
+                    {
+                        title: 'Additional Details',
+                        items: [
+                            'Supply Ability: Every 7 Days',
+                            'Origin: Solapur, Jalgaon, Nanded (India)',
+                            'IncoTerms: FOB or CIF',
+                            'Payment Terms: 50% Advance & 50% DP',
+                            'Delivery Time: 7 Days From Date Of Advance',
+                            'Port of Loading: JNPT Port Mumbai'
+                        ]
+                    }
+                ]
+            },
+            'pancake-mix': {
+                name: 'Pancake Mix',
+                image: 'images/banana pancake mix.png',
+                sections: [
+                    {
+                        title: 'Product Details',
+                        items: [
+                            'Color: Bright Green',
+                            'Grade: Premium',
+                            'Maturity: 45+ cm in Length',
+                            // 'Shelf Life: 10 - 15 Days'
+                        ]
+                    },
+                    {
+                        title: 'Packaging & Container Loading',
+                        items: [
+                            'Weight: 4 Kg bag',
+                            'Gross Weight: 4.1 Kg bag',
+                            'Temperature: 6°C'
+                        ]
+                    },
+                    {
+                        title: 'Additional Details',
+                        items: [
+                            'Origin: Tamilnadu, Andhra, Karnataka, Maharashtra',
+                            'IncoTerms: FOB or CIF',
+                            'Payment Terms: 50% Advance & 50% DP',
+                            'Delivery Time: 7 Days From Date Of Advance',
+                            'Port of Loading: JNPT Port Mumbai'
+                        ]
+                    }
+                ]
+            },
+            
+        };   
+        function openProductModal(productId) {
+            const product = farmFreshProducts[productId];
+            if (!product) return;
+
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalImage').src = product.image;
+
+            let contentHTML = '';
+            product.sections.forEach(section => {
+                contentHTML += `
+                    <div class="modal-section">
+                        <h3>${section.title}</h3>
+                        <ul>
+                            ${section.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalContent').innerHTML = contentHTML;
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeProductModal();
+            }
+        }
+    </script>
+</body>
+</html>
