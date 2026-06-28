@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
+    <base href="">
     <title>Farm Fresh Produce - Tropizestexovia</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -35,8 +35,10 @@
         }
         
         .product-image-wrapper {
-            width: 100%;
-            height: 220px;
+            width: 100%; 
+            /* height: 220px; */
+            aspect-ratio:4/3;
+            overflow:hidden;
             background: var(--bg-light);
             display: flex;
             align-items: center;
@@ -47,7 +49,9 @@
         .product-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit:contain;
+            display:block;
+            /* object-fit: cover; */
         }
         
         .product-info {
@@ -571,10 +575,10 @@
                                 <!-- <div class="spec-label">Shelf Life</div> -->
                                 <!-- <div class="spec-value">7–10 days</div> -->
                             </div>
-                            <div class="spec">
+                            <!-- <div class="spec">
                                 <div class="spec-label">Origin</div>
                                 <div class="spec-value">India</div>
-                            </div>
+                            </div> -->
                         </div>
                         <button class="enquiry-btn">View Details</button>
                     </div>
