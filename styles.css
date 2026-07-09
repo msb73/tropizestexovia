@@ -985,11 +985,18 @@ section {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 10px 0;
+        /* padding: 10px 0; */
+        padding:0;
     }
     
     .nav-container {
-        padding: 0 15px;
+        /* padding: 0 15px; */
+        height:70px;
+        padding:0 15px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        
     }
     
     .logo {
@@ -1105,11 +1112,17 @@ section {
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 8px 0;
+        /* padding: 8px 0; */
+        padding: 0;
     }
     
     .nav-container {
-        padding: 0 10px;
+        height:60px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        /* padding: 0 10px; */
     }
     
     .logo {
@@ -1227,7 +1240,15 @@ section {
 
 @media (max-width: 360px) {
     .navbar {
-        padding: 6px 0;
+        /* padding: 6px 0; */
+        padding:0;
+    }
+    .nav-container{
+        height:50px;
+        padding:0 10px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
     }
     
     .logo {
